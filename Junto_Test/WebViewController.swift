@@ -17,12 +17,16 @@ class WebViewController: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setUpActivityIndicator()
         webView.delegate = self
         view.backgroundColor = .orange
         navigationItem.title = product?.title
         webView.loadRequest(URLRequest(url: URL(string: product!.redirectUrl)!))
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        activityIndicator.frame = view.bounds
     }
     
     func setUpActivityIndicator(){
@@ -31,6 +35,9 @@ class WebViewController: UIViewController, UIWebViewDelegate {
         activityIndicator.backgroundColor = UIColor.darkGray.withAlphaComponent(0.6)
         activityIndicator.activityIndicatorViewStyle = .whiteLarge
         activityIndicator.layer.zPosition = 5
+        
+        webView.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {

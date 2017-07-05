@@ -10,6 +10,14 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SanFranciscoDisplay-Regular.otf">
+            <string>SanFranciscoDisplay-Regular</string>
+        </array>
+        <array key="SanFranciscoText-Regular.otf">
+            <string>SanFranciscoText-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Product Info View Controller-->
         <scene sceneID="sZ9-dw-W9u">
@@ -27,11 +35,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PJm-s2-rcn">
-                                        <rect key="frame" x="304" y="51" width="100" height="30"/>
+                                        <rect key="frame" x="304" y="54" width="100" height="35"/>
                                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="qEt-jd-DJ7"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="SanFranciscoDisplay-Regular" family="San Francisco Display" pointSize="19"/>
                                         <state key="normal" title="Get It">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -40,20 +49,32 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1p7-CH-Why">
-                                        <rect key="frame" x="10" y="10" width="394" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="10" y="10" width="394" height="24"/>
+                                        <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="▲ 9999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoS-98-cxM">
+                                        <rect key="frame" x="10" y="61.666666666666671" width="51" height="20.000000000000014"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="maA-xG-46d"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SanFranciscoDisplay-Regular" family="San Francisco Display" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="1p7-CH-Why" firstAttribute="centerX" secondItem="Me8-Px-qKu" secondAttribute="centerX" id="5DH-2f-ggj"/>
+                                    <constraint firstItem="HoS-98-cxM" firstAttribute="baseline" secondItem="PJm-s2-rcn" secondAttribute="baseline" id="6BF-g6-Ry3"/>
                                     <constraint firstAttribute="trailing" secondItem="1p7-CH-Why" secondAttribute="trailing" constant="10" id="BJZ-g3-zUS"/>
                                     <constraint firstItem="1p7-CH-Why" firstAttribute="leading" secondItem="Me8-Px-qKu" secondAttribute="leading" constant="10" id="Y72-0a-YBb"/>
                                     <constraint firstItem="PJm-s2-rcn" firstAttribute="top" secondItem="1p7-CH-Why" secondAttribute="bottom" constant="20" id="YGg-qG-Lrm"/>
                                     <constraint firstItem="PJm-s2-rcn" firstAttribute="trailing" secondItem="1p7-CH-Why" secondAttribute="trailing" id="Zkv-fV-Zw1"/>
+                                    <constraint firstItem="HoS-98-cxM" firstAttribute="bottom" secondItem="PJm-s2-rcn" secondAttribute="bottom" id="i4h-Dk-GzY"/>
                                     <constraint firstItem="1p7-CH-Why" firstAttribute="top" secondItem="Me8-Px-qKu" secondAttribute="top" constant="10" id="ke5-2j-Xfy"/>
-                                    <constraint firstAttribute="bottom" secondItem="PJm-s2-rcn" secondAttribute="bottom" constant="40" id="lAy-cc-LbJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="PJm-s2-rcn" secondAttribute="bottom" constant="500" id="lAy-cc-LbJ"/>
+                                    <constraint firstItem="HoS-98-cxM" firstAttribute="leading" secondItem="1p7-CH-Why" secondAttribute="leading" id="sjJ-AC-9Ho"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -69,6 +90,7 @@
                         <outlet property="gotItButton" destination="PJm-s2-rcn" id="F36-9b-3pe"/>
                         <outlet property="productDescriptionLabel" destination="1p7-CH-Why" id="lwF-1O-frS"/>
                         <outlet property="scrollView" destination="Me8-Px-qKu" id="E9e-30-sr9"/>
+                        <outlet property="upvotesLabel" destination="HoS-98-cxM" id="TT4-yl-kM4"/>
                         <segue destination="CVF-fx-P7t" kind="show" identifier="Show Web View" id="sfZ-D3-dgJ"/>
                     </connections>
                 </viewController>
@@ -129,7 +151,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="209"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zhG-op-Wxq" id="ldV-85-nfo">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="209"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="208.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lh3-bK-6VQ">
@@ -139,24 +161,24 @@
                                                         <constraint firstAttribute="width" secondItem="Lh3-bK-6VQ" secondAttribute="height" multiplier="1:1" id="jTc-h5-IFw"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="753" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddT-y7-RbX">
-                                                    <rect key="frame" x="135" y="49" width="221" height="20.333333333333329"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="753" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddT-y7-RbX">
+                                                    <rect key="frame" x="135" y="49" width="221" height="23"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7M-Mc-Vvf">
-                                                    <rect key="frame" x="135" y="84.333333333333314" width="256" height="29.666666666666671"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <rect key="frame" x="135" y="82" width="261" height="57"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoDisplay-Regular" family="San Francisco Display" pointSize="13"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="▲ 9999" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tho-B3-gXu">
-                                                    <rect key="frame" x="343" y="129" width="48" height="30"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="▲ 9999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tho-B3-gXu">
+                                                    <rect key="frame" x="340" y="144" width="51" height="20"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="VsC-di-AAy"/>
+                                                        <constraint firstAttribute="height" constant="20" id="VsC-di-AAy"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoDisplay-Regular" family="San Francisco Display" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -166,19 +188,20 @@
                                                 <constraint firstItem="Lh3-bK-6VQ" firstAttribute="leading" secondItem="ldV-85-nfo" secondAttribute="leading" constant="10" id="Jfw-z0-dsF"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="ddT-y7-RbX" secondAttribute="trailing" constant="50" id="O6N-7c-4N0"/>
                                                 <constraint firstItem="b7M-Mc-Vvf" firstAttribute="leading" secondItem="Lh3-bK-6VQ" secondAttribute="trailing" constant="15" id="SmZ-vy-o8y"/>
-                                                <constraint firstItem="tho-B3-gXu" firstAttribute="top" secondItem="b7M-Mc-Vvf" secondAttribute="bottom" constant="15" id="dDH-Hy-r50"/>
-                                                <constraint firstItem="b7M-Mc-Vvf" firstAttribute="top" secondItem="ddT-y7-RbX" secondAttribute="bottom" constant="15" id="eky-BH-1Yd"/>
+                                                <constraint firstItem="tho-B3-gXu" firstAttribute="top" secondItem="b7M-Mc-Vvf" secondAttribute="bottom" constant="5" id="dDH-Hy-r50"/>
+                                                <constraint firstItem="b7M-Mc-Vvf" firstAttribute="top" secondItem="ddT-y7-RbX" secondAttribute="bottom" constant="10" id="eky-BH-1Yd"/>
                                                 <constraint firstItem="Lh3-bK-6VQ" firstAttribute="top" secondItem="ddT-y7-RbX" secondAttribute="top" id="i1P-9w-Pp2"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="tho-B3-gXu" secondAttribute="trailing" constant="15" id="kJn-Rj-4Vi"/>
                                                 <constraint firstItem="Lh3-bK-6VQ" firstAttribute="centerY" secondItem="ldV-85-nfo" secondAttribute="centerY" id="pt8-gT-qvw"/>
-                                                <constraint firstItem="tho-B3-gXu" firstAttribute="bottom" secondItem="Lh3-bK-6VQ" secondAttribute="bottom" id="qdm-om-XjP"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="b7M-Mc-Vvf" secondAttribute="trailing" constant="15" id="tgv-1L-g8w"/>
+                                                <constraint firstItem="tho-B3-gXu" firstAttribute="bottom" secondItem="Lh3-bK-6VQ" secondAttribute="bottom" constant="5" id="qdm-om-XjP"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="b7M-Mc-Vvf" secondAttribute="trailing" constant="10" id="tgv-1L-g8w"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="productDescriptionLabel" destination="b7M-Mc-Vvf" id="e3h-HH-psN"/>
                                             <outlet property="productNameLabel" destination="ddT-y7-RbX" id="ov2-EX-BRU"/>
                                             <outlet property="thumbnailImageView" destination="Lh3-bK-6VQ" id="xlN-vG-m5T"/>
+                                            <outlet property="upvotesLabel" destination="tho-B3-gXu" id="FKJ-Ll-1L0"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -207,7 +230,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hT1-1D-6RU" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V8g-WU-p6J">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="V8g-WU-p6J">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

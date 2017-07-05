@@ -18,6 +18,13 @@ class ProductTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        thumbnailImageView.layer.cornerRadius = 4
+        thumbnailImageView.clipsToBounds = true
+        
+        upvotesLabel.layer.borderWidth = 1
+        upvotesLabel.layer.borderColor = UIColor.lightGray.cgColor
+        upvotesLabel.layer.cornerRadius = 4
+        upvotesLabel.clipsToBounds = true
     }
 
 }

@@ -47,8 +47,13 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
     }
     
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        activityIndicator.frame = tableView.frame
+        barMenu.frame.size.height = navigationController!.navigationBar.frame.height
+    }
+    
     private func setTableView(){
-        activityIndicator.frame = view.bounds
         tableView.addSubview(refreshControl!)
         view.backgroundColor = UIColor.orange
         tableView.delegate = self
@@ -60,6 +65,7 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
         fetchProductsFromCategory(category: currentCategory, enableActivityIndicator: false, refreshControl: refreshControl)
     }
     
+   
     private func setDropdownMenu(){
         barMenu.frame = CGRect(x: 0, y: 0, width: view.frame.width / 2, height: navigationController!.navigationBar.frame.height)
         
@@ -70,8 +76,9 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
         navigationItem.titleView = barMenu
         barMenu.useFullScreenWidth = true
     }
-    
+
     private func setTranslucentNavigationBar(){
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : UIFont(name: "SanFranciscoText-Medium", size: 18)!, NSForegroundColorAttributeName : UIColor.white]
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
@@ -100,7 +107,7 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
         cell.productNameLabel.text = products[indexPath.row].title
         cell.thumbnailImageView.image = products[indexPath.row].image
         cell.productDescriptionLabel.text = products[indexPath.row].description
-        
+        cell.upvotesLabel.text = " ▲ \(products[indexPath.row].upvotes)    "
         
         if let cachedImage = imageCache.cache.object(forKey: products[indexPath.row].imageUrl as AnyObject) as! UIImage?{
             cell.thumbnailImageView.image = cachedImage
@@ -149,11 +156,9 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
         }
     }
     
-
-    
-    
     func fetchCategories(){
-        self.tableView.addSubview(activityIndicator)
+        activityIndicator.frame = tableView.frame
+        self.view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
         
         let sessionConfig = URLSessionConfiguration.default
@@ -172,9 +177,6 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
         let bodyObject: [String : Any] = [:]
         
         request.httpBody = try! JSONSerialization.data(withJSONObject: bodyObject, options: [])
-        
-        
-        
         request.addValue("__cfduid=(null)", forHTTPHeaderField: "Cookie")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
@@ -223,13 +225,15 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
             return
         }
         
+        tableView.isScrollEnabled = false
+        
         if refreshControl != nil{
             refreshControl!.beginRefreshing()
         }
         //start activity indicator
         
         if enableActivityIndicator == true{
-            self.tableView.addSubview(activityIndicator)
+            self.view.addSubview(activityIndicator)
             activityIndicator.startAnimating()
         }
         
@@ -273,8 +277,13 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
                         self.products.removeAll()
                         for dictionary in json as! [[String : AnyObject]]{
                             var thumbnailUrl : String?
+                            var screenshotUrl : String?
                             if let imageUrlPath = dictionary["thumbnail"] as? [String : AnyObject]{
                                 thumbnailUrl = imageUrlPath["image_url"] as? String
+                            }
+                            
+                            if let screenshotUrlPath = dictionary["screenshot_url"] as? [String : AnyObject]{
+                                screenshotUrl = screenshotUrlPath["300px"] as? String
                             }
                             
                             self.products.append(Product(
@@ -282,13 +291,14 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
                                 description: dictionary["tagline"] as! String,
                                 imageUrl: thumbnailUrl!,
                                 upvotes: String(dictionary["votes_count"] as! Int),
-                                redirectUrl: dictionary["redirect_url"] as! String)
+                                redirectUrl: dictionary["redirect_url"] as! String, screenshotUrl: screenshotUrl!)
                             )
                             
                         }
                     }
                     
                     DispatchQueue.main.async {
+                        self.tableView.isScrollEnabled = true
                         self.tableView.reloadData()
                         if enableActivityIndicator == true{
                             self.activityIndicator.stopAnimating()
@@ -316,26 +326,17 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
         return 1
     }
     
-    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, numberOfRowsInComponent component: Int) -> Int {
-        print(categories.count)
-        return categories.count
-    }
-    
-    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, titleForRow row: Int, forComponent component: Int) -> String? {
+    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         if categories.count > 0 && categories.count > row{
-            return categories[row].name
-        } else {
-            return ""
+            let title = NSAttributedString(string: categories[row].name, attributes: [NSFontAttributeName : UIFont(name: "SanFranciscoText-Light", size: 16)!, NSForegroundColorAttributeName : UIColor.black])
+            return title
+        }  else {
+            return NSAttributedString(string: "Tech", attributes: [NSFontAttributeName : UIFont(name: "SanFranciscoText-Light", size: 16)!, NSForegroundColorAttributeName : UIColor.black])
         }
     }
     
-    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, titleForComponent component: Int) -> String? {
-        if categories.count > 0{
-            return currentCategory!.name
-
-        } else {
-            return "Tech"
-        }
+    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, numberOfRowsInComponent component: Int) -> Int {
+        return categories.count
     }
     
     func dropdownMenu(_ dropdownMenu: MKDropdownMenu, didSelectRow row: Int, inComponent component: Int) {
@@ -353,6 +354,17 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
     func dropdownMenu(_ dropdownMenu: MKDropdownMenu, backgroundColorForHighlightedRowsInComponent component: Int) -> UIColor? {
         return UIColor.orange
     }
+    
+    
+    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, attributedTitleForComponent component: Int) -> NSAttributedString? {
+        if categories.count > 0{
+            let title = NSAttributedString(string: currentCategory!.name, attributes: [NSFontAttributeName : UIFont(name: "SanFranciscoText-Medium", size: 18)!, NSForegroundColorAttributeName : UIColor.white])
+            return title
+        }  else {
+            return NSAttributedString(string: "Tech", attributes: [NSFontAttributeName : UIFont(name: "SanFranciscoText-Medium", size: 18)!, NSForegroundColorAttributeName : UIColor.white])
+        }
+    }
+    
     
 
 }

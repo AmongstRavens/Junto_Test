@@ -10,6 +10,7 @@ import UIKit
 
 class ProductInfoViewController: UIViewController, UIScrollViewDelegate {
 
+    @IBOutlet weak var upvotesLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var productDescriptionLabel: UILabel!
     @IBOutlet weak var gotItButton: UIButton!
@@ -28,11 +29,24 @@ class ProductInfoViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         scrollView.delegate = self
         settupBarImage()
+        UISettup()
+        
         productDescriptionLabel.text = product?.description
+        upvotesLabel.text = " ▲ \(product.upvotes)   "
     }
     
     @IBAction func gotIt(_ sender: UIButton) {
         performSegue(withIdentifier: "Show Web View", sender: self)
+    }
+    
+    func UISettup(){
+        upvotesLabel.layer.borderWidth = 1
+        upvotesLabel.layer.borderColor = UIColor.lightGray.cgColor
+        upvotesLabel.layer.cornerRadius = 4
+        upvotesLabel.clipsToBounds = true
+        
+        gotItButton.layer.cornerRadius = 4
+        gotItButton.clipsToBounds = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -44,28 +58,28 @@ class ProductInfoViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func settupBarImage(){
-        let barViewFrame = CGRect(x: 0, y: -HeaderConstants.height, width: scrollView.frame.width, height: HeaderConstants.height)
+        let barViewFrame = CGRect(x: 0, y: -HeaderConstants.height, width: view.frame.width, height: HeaderConstants.height)
         
-        //fetch image if it's still nil
-        if product?.image == nil{
-            barImageView = HeaderView(title: product!.title, upVotes: product!.upvotes, frame: barViewFrame, image: nil)
-            URLSession.shared.dataTask(with: URL(string : product!.imageUrl)!) { (data, response, error) in
-                guard error == nil else{
-                    print(error!.localizedDescription)
-                    return
+        barImageView = HeaderView(title: product!.title, upVotes: product!.upvotes, frame: barViewFrame, image: nil)
+        
+    
+        barImageView!.enableActivityIndicator()
+        
+        URLSession.shared.dataTask(with: URL(string : product!.screenshotUrl)!) { (data, response, error) in
+            guard error == nil else{
+                print(error!.localizedDescription)
+                return
+            }
+            
+            if let image = UIImage(data: data!){
+                DispatchQueue.main.async {
+                    self.barImageView!.image = image
+                    self.barImageView!.disableActivityIndicator()
                 }
-                
-                if let image = UIImage(data: data!){
-                    DispatchQueue.main.async {
-                        self.barImageView?.image = image
-                    }
-                }
-                }.resume()
+            }
+        }.resume()
             
 
-        } else{
-            barImageView = HeaderView(title: product!.title, upVotes: product!.upvotes, frame: barViewFrame, image: product!.image!)
-        }
         scrollView.contentInset = UIEdgeInsetsMake(HeaderConstants.height, 0, 0, 0)
         scrollView.contentOffset = CGPoint(x: 0, y: -HeaderConstants.height)
         scrollView.addSubview(barImageView!)
