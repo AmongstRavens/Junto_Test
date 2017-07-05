@@ -15,7 +15,24 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
     
     private var categories = [Category]()
     private var products = [Product]()
+    private var currentCategory : Category?
 
+    
+    lazy var activityIndicator : UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.activityIndicatorViewStyle = .whiteLarge
+        indicator.backgroundColor = UIColor.lightGray.withAlphaComponent(0.6)
+        indicator.layer.zPosition = 10
+        return indicator
+    }()
+    
+    lazy var refreshControl: UIRefreshControl? = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(ProductsViewController.refreshProducts(_:)), for: UIControlEvents.valueChanged)
+        return refreshControl
+    }()
+    
+    
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -31,13 +48,20 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
     
     
     private func setTableView(){
+        activityIndicator.frame = view.bounds
+        tableView.addSubview(refreshControl!)
         view.backgroundColor = UIColor.orange
         tableView.delegate = self
         tableView.dataSource = self
     }
     
+    
+    func refreshProducts(_ refreshControl : UIRefreshControl){
+        fetchProductsFromCategory(category: currentCategory, enableActivityIndicator: false, refreshControl: refreshControl)
+    }
+    
     private func setDropdownMenu(){
-        barMenu.frame = CGRect(x: 0, y: 0, width: view.frame.width / 2, height: 50)
+        barMenu.frame = CGRect(x: 0, y: 0, width: view.frame.width / 2, height: navigationController!.navigationBar.frame.height)
         
         barMenu.dataSource = self
         barMenu.delegate = self
@@ -45,7 +69,6 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
         barMenu.rowSeparatorColor = UIColor.orange
         navigationItem.titleView = barMenu
         barMenu.useFullScreenWidth = true
-        
     }
     
     private func setTranslucentNavigationBar(){
@@ -62,11 +85,6 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
         return 1
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationItem.title = "Current Category"
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationItem.title = ""
@@ -78,6 +96,7 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Product Cell", for: indexPath) as! ProductTableViewCell
+        
         cell.productNameLabel.text = products[indexPath.row].title
         cell.thumbnailImageView.image = products[indexPath.row].image
         cell.productDescriptionLabel.text = products[indexPath.row].description
@@ -86,6 +105,7 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
         if let cachedImage = imageCache.cache.object(forKey: products[indexPath.row].imageUrl as AnyObject) as! UIImage?{
             cell.thumbnailImageView.image = cachedImage
         }
+        
         
         //URL session for fetching actual image
         
@@ -99,6 +119,9 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
                 DispatchQueue.main.async {
                     if let cell = tableView.cellForRow(at: indexPath) as? ProductTableViewCell{
                         cell.thumbnailImageView.image = image
+                        if self.products.count > indexPath.row{
+                            self.products[indexPath.row].image = image
+                        }
                     }
                 }
             }
@@ -112,15 +135,27 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "Show Product Info", sender: self)
+        if refreshControl != nil && refreshControl!.isRefreshing{
+            refreshControl!.endRefreshing()
+        }
+        performSegue(withIdentifier: "Show Product Info", sender: indexPath)
     }
     
-    func refreshProducts(_ refreshControl : UIRefreshControl){
-        refreshControl.endRefreshing()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Show Product Info"{
+            let indexPath = sender as! IndexPath
+            let destinationVC = segue.destination as! ProductInfoViewController
+            destinationVC.product = products[indexPath.row]
+        }
     }
+    
+
     
     
     func fetchCategories(){
+        self.tableView.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
         
@@ -139,7 +174,6 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
         request.httpBody = try! JSONSerialization.data(withJSONObject: bodyObject, options: [])
         
         
-        //Headers from paw
         
         request.addValue("__cfduid=(null)", forHTTPHeaderField: "Cookie")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -166,8 +200,11 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
                 }
                 
                 DispatchQueue.main.async {
+                    self.currentCategory = self.categories[0]
                     self.barMenu.reloadAllComponents()
-                    self.fetchProductsFromCategory(category: self.categories[0])
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.removeFromSuperview()
+                    self.fetchProductsFromCategory(category: self.currentCategory!, enableActivityIndicator: true, refreshControl: nil)
                 }
                 
                 
@@ -181,21 +218,20 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
         session.finishTasksAndInvalidate()
     }
     
-    func fetchProductsFromCategory(category : Category?){
+    func fetchProductsFromCategory(category : Category?, enableActivityIndicator : Bool, refreshControl: UIRefreshControl?){
         guard category != nil else {
             return
         }
         
-        //Create and start activity indicator
+        if refreshControl != nil{
+            refreshControl!.beginRefreshing()
+        }
+        //start activity indicator
         
-        let activityIndicator = UIActivityIndicatorView(frame: self.tableView.bounds)
-        activityIndicator.frame.origin = CGPoint(x: 0, y: 0)
-        activityIndicator.activityIndicatorViewStyle = .whiteLarge
-        activityIndicator.backgroundColor = UIColor.lightGray
-        activityIndicator.layer.zPosition = 10
-        
-        self.tableView.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
+        if enableActivityIndicator == true{
+            self.tableView.addSubview(activityIndicator)
+            activityIndicator.startAnimating()
+        }
         
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
@@ -234,6 +270,7 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
                     
                     if let json = _json["posts"]{
                         
+                        self.products.removeAll()
                         for dictionary in json as! [[String : AnyObject]]{
                             var thumbnailUrl : String?
                             if let imageUrlPath = dictionary["thumbnail"] as? [String : AnyObject]{
@@ -244,7 +281,8 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
                                 title: dictionary["name"] as! String,
                                 description: dictionary["tagline"] as! String,
                                 imageUrl: thumbnailUrl!,
-                                upvotes: String(dictionary["votes_count"] as! Int))
+                                upvotes: String(dictionary["votes_count"] as! Int),
+                                redirectUrl: dictionary["redirect_url"] as! String)
                             )
                             
                         }
@@ -252,8 +290,13 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
                     
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
-                        activityIndicator.stopAnimating()
-                        activityIndicator.removeFromSuperview()
+                        if enableActivityIndicator == true{
+                            self.activityIndicator.stopAnimating()
+                            self.activityIndicator.removeFromSuperview()
+                        }
+                        if refreshControl != nil{
+                            refreshControl!.endRefreshing()
+                        }
                     }
                 } catch{
                     print("Error parsing data")
@@ -288,7 +331,7 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
     
     func dropdownMenu(_ dropdownMenu: MKDropdownMenu, titleForComponent component: Int) -> String? {
         if categories.count > 0{
-            return categories[0].name
+            return currentCategory!.name
 
         } else {
             return "Tech"
@@ -296,6 +339,14 @@ class ProductsViewController: UIViewController, MKDropdownMenuDataSource, MKDrop
     }
     
     func dropdownMenu(_ dropdownMenu: MKDropdownMenu, didSelectRow row: Int, inComponent component: Int) {
+        if refreshControl != nil && refreshControl!.isRefreshing{
+            refreshControl!.endRefreshing()
+        }
+        
+        products.removeAll()
+        currentCategory = categories[row]
+        fetchProductsFromCategory(category: currentCategory, enableActivityIndicator: true, refreshControl: nil)
+        dropdownMenu.reloadAllComponents()
         dropdownMenu.closeAllComponents(animated: true)
     }
     

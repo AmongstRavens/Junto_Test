@@ -27,12 +27,14 @@ class Product{
     var title : String
     var description : String
     var upvotes : String
+    var redirectUrl : String
     
-    init(title: String, description : String, imageUrl: String, upvotes: String){
+    init(title: String, description : String, imageUrl: String, upvotes: String, redirectUrl : String){
         self.description = description
         self.title = title
         self.imageUrl = imageUrl
         self.upvotes = upvotes
+        self.redirectUrl = redirectUrl
     }
 }
 

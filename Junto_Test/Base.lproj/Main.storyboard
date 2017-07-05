@@ -39,7 +39,7 @@
                                             <action selector="gotIt:" destination="UoP-8C-XIU" eventType="touchUpInside" id="Djg-YA-enb"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1p7-CH-Why">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1p7-CH-Why">
                                         <rect key="frame" x="10" y="10" width="394" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -53,7 +53,7 @@
                                     <constraint firstItem="PJm-s2-rcn" firstAttribute="top" secondItem="1p7-CH-Why" secondAttribute="bottom" constant="20" id="YGg-qG-Lrm"/>
                                     <constraint firstItem="PJm-s2-rcn" firstAttribute="trailing" secondItem="1p7-CH-Why" secondAttribute="trailing" id="Zkv-fV-Zw1"/>
                                     <constraint firstItem="1p7-CH-Why" firstAttribute="top" secondItem="Me8-Px-qKu" secondAttribute="top" constant="10" id="ke5-2j-Xfy"/>
-                                    <constraint firstAttribute="bottom" secondItem="PJm-s2-rcn" secondAttribute="bottom" constant="503" id="lAy-cc-LbJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="PJm-s2-rcn" secondAttribute="bottom" constant="40" id="lAy-cc-LbJ"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -79,7 +79,7 @@
         <!--Web View Controller-->
         <scene sceneID="5rx-mU-9CD">
             <objects>
-                <viewController id="CVF-fx-P7t" customClass="WebViewController" customModule="Junto_Test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="CVF-fx-P7t" customClass="WebViewController" customModule="Junto_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5YW-TK-prW"/>
                         <viewControllerLayoutGuide type="bottom" id="X7u-4m-yby"/>

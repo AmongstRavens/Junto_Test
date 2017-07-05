@@ -13,9 +13,11 @@ class HeaderView: UIImageView {
     private var textLabel = UILabel()
     private var upvotesLabel = UILabel()
     
-    convenience init (title : String, upVotes : Int, frame : CGRect, image : UIImage){
+    convenience init (title : String, upVotes : String, frame : CGRect, image : UIImage?){
         self.init(frame: frame)
-        self.image = image
+        if image != nil{
+            self.image = image
+        }
         self.contentMode = .scaleAspectFill
         self.clipsToBounds = true
         
