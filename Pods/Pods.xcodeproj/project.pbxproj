@@ -1,0 +1,548 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D6854DC1B324875A009A551EE407DD3 /* Pods-Junto_Test-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C26CD70E6882DD9DE9D78138E03B3D7 /* Pods-Junto_Test-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		407440C5216AD13499D01DC3B72860CC /* MKDropdownMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 264B77B5DB4135D48F19FDD8F8ADB323 /* MKDropdownMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4B928BA447B8EF57B570E4926DABD652 /* MKDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3CF9DBEF9E80FDB13FA81724240FA2 /* MKDropdownMenu.m */; };
+		78C13B06E051BD6A51F3BC9929D8DC6E /* MKDropdownMenu-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 566537FCF6A2EF84644388BA5F0860CA /* MKDropdownMenu-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		817BC98283D1CEE8CB4A6BD3C17D9B0F /* Pods-Junto_Test-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE39287EDA415C633DE326521BC7CC /* Pods-Junto_Test-dummy.m */; };
+		9A7812DA0B4C540CCAB4EE841638913E /* MKDropdownMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BF399A747DBFD288AED4DC59ADC6E6 /* MKDropdownMenu-dummy.m */; };
+		A5033962E0C46F824B424D3022981D4F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		AF54916D20D9D211B6A2BF06962538F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9B9285A743AADE1553D57C86A2A69AEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F5998E20F683EE1E9022DCED6FFD564C;
+			remoteInfo = MKDropdownMenu;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0668C281415AEEB8D7951F374BA3F7BB /* Pods-Junto_Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Junto_Test.debug.xcconfig"; sourceTree = "<group>"; };
+		231A90A71AF47615556D56809787C1C9 /* MKDropdownMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MKDropdownMenu-prefix.pch"; sourceTree = "<group>"; };
+		264B77B5DB4135D48F19FDD8F8ADB323 /* MKDropdownMenu.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKDropdownMenu.h; path = MKDropdownMenu/MKDropdownMenu.h; sourceTree = "<group>"; };
+		2EC90D538681D1EFA1DC0190836F4E5C /* Pods-Junto_Test-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Junto_Test-frameworks.sh"; sourceTree = "<group>"; };
+		367E62F72819D095605E2FACF5AEEF63 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44528A7276F336ED37DE57076766066F /* Pods-Junto_Test.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Junto_Test.modulemap"; sourceTree = "<group>"; };
+		46189B3725ED054136A2E1344D53E06B /* Pods_Junto_Test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Junto_Test.framework; path = "Pods-Junto_Test.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		566537FCF6A2EF84644388BA5F0860CA /* MKDropdownMenu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MKDropdownMenu-umbrella.h"; sourceTree = "<group>"; };
+		59605724429429E9E47C7E640AE0044D /* Pods-Junto_Test-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Junto_Test-resources.sh"; sourceTree = "<group>"; };
+		616CD3857173F91D39AA6A778B6D260E /* MKDropdownMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MKDropdownMenu.framework; path = MKDropdownMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		6B3A00252003D2E411F32F26986F26DE /* Pods-Junto_Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Junto_Test.release.xcconfig"; sourceTree = "<group>"; };
+		7ADE39287EDA415C633DE326521BC7CC /* Pods-Junto_Test-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Junto_Test-dummy.m"; sourceTree = "<group>"; };
+		8C26CD70E6882DD9DE9D78138E03B3D7 /* Pods-Junto_Test-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Junto_Test-umbrella.h"; sourceTree = "<group>"; };
+		8E3CF9DBEF9E80FDB13FA81724240FA2 /* MKDropdownMenu.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKDropdownMenu.m; path = MKDropdownMenu/MKDropdownMenu.m; sourceTree = "<group>"; };
+		91BF399A747DBFD288AED4DC59ADC6E6 /* MKDropdownMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MKDropdownMenu-dummy.m"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9CF6465C853B32D5EC8BE12B4B81EA89 /* MKDropdownMenu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MKDropdownMenu.modulemap; sourceTree = "<group>"; };
+		9F502A1E867F9E35151632D3FDD4E0A8 /* Pods-Junto_Test-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Junto_Test-acknowledgements.plist"; sourceTree = "<group>"; };
+		AAAF0DA1C383D535DA2CA0B1B4125CF0 /* MKDropdownMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MKDropdownMenu.xcconfig; sourceTree = "<group>"; };
+		EA9330BAA17058F215A3222E0062EE28 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F27A3D6A4150391E309FA1FDCE12AC86 /* Pods-Junto_Test-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Junto_Test-acknowledgements.markdown"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8A1CF8BAA21D76A2DC8F235C12E497F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5033962E0C46F824B424D3022981D4F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99F20C33C282842B400F0CEACE31375B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF54916D20D9D211B6A2BF06962538F5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19BD7E03A93931C020328BA0F8A2D0BF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D825794C1973F2ADCE4A8BB5BF4E7CA7 /* MKDropdownMenu */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		38B95E598873BFAEDA7549E419178DD7 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4A02DF67BF9E9205D03BB71E8CEC6C9E /* Pods-Junto_Test */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		4A02DF67BF9E9205D03BB71E8CEC6C9E /* Pods-Junto_Test */ = {
+			isa = PBXGroup;
+			children = (
+				367E62F72819D095605E2FACF5AEEF63 /* Info.plist */,
+				44528A7276F336ED37DE57076766066F /* Pods-Junto_Test.modulemap */,
+				F27A3D6A4150391E309FA1FDCE12AC86 /* Pods-Junto_Test-acknowledgements.markdown */,
+				9F502A1E867F9E35151632D3FDD4E0A8 /* Pods-Junto_Test-acknowledgements.plist */,
+				7ADE39287EDA415C633DE326521BC7CC /* Pods-Junto_Test-dummy.m */,
+				2EC90D538681D1EFA1DC0190836F4E5C /* Pods-Junto_Test-frameworks.sh */,
+				59605724429429E9E47C7E640AE0044D /* Pods-Junto_Test-resources.sh */,
+				8C26CD70E6882DD9DE9D78138E03B3D7 /* Pods-Junto_Test-umbrella.h */,
+				0668C281415AEEB8D7951F374BA3F7BB /* Pods-Junto_Test.debug.xcconfig */,
+				6B3A00252003D2E411F32F26986F26DE /* Pods-Junto_Test.release.xcconfig */,
+			);
+			name = "Pods-Junto_Test";
+			path = "Target Support Files/Pods-Junto_Test";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				19BD7E03A93931C020328BA0F8A2D0BF /* Pods */,
+				830BD4163B679175C02DCEC520819E0E /* Products */,
+				38B95E598873BFAEDA7549E419178DD7 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		830BD4163B679175C02DCEC520819E0E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				616CD3857173F91D39AA6A778B6D260E /* MKDropdownMenu.framework */,
+				46189B3725ED054136A2E1344D53E06B /* Pods_Junto_Test.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8CEAE9BDB11810B728784623AAB6071D /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EA9330BAA17058F215A3222E0062EE28 /* Info.plist */,
+				9CF6465C853B32D5EC8BE12B4B81EA89 /* MKDropdownMenu.modulemap */,
+				AAAF0DA1C383D535DA2CA0B1B4125CF0 /* MKDropdownMenu.xcconfig */,
+				91BF399A747DBFD288AED4DC59ADC6E6 /* MKDropdownMenu-dummy.m */,
+				231A90A71AF47615556D56809787C1C9 /* MKDropdownMenu-prefix.pch */,
+				566537FCF6A2EF84644388BA5F0860CA /* MKDropdownMenu-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/MKDropdownMenu";
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		D825794C1973F2ADCE4A8BB5BF4E7CA7 /* MKDropdownMenu */ = {
+			isa = PBXGroup;
+			children = (
+				264B77B5DB4135D48F19FDD8F8ADB323 /* MKDropdownMenu.h */,
+				8E3CF9DBEF9E80FDB13FA81724240FA2 /* MKDropdownMenu.m */,
+				8CEAE9BDB11810B728784623AAB6071D /* Support Files */,
+			);
+			name = MKDropdownMenu;
+			path = MKDropdownMenu;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		5CF91E0B745FCEEB1DFB6D794C30CEC0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78C13B06E051BD6A51F3BC9929D8DC6E /* MKDropdownMenu-umbrella.h in Headers */,
+				407440C5216AD13499D01DC3B72860CC /* MKDropdownMenu.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F13FE8002579BE0E0BFC5C1403AB4963 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D6854DC1B324875A009A551EE407DD3 /* Pods-Junto_Test-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D189FBF1076CFD9C6383FB320A99BB91 /* Pods-Junto_Test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54624C9D646527DCF7AF75B9399E588E /* Build configuration list for PBXNativeTarget "Pods-Junto_Test" */;
+			buildPhases = (
+				4B77E12E2CF29827486CDE46999D91D0 /* Sources */,
+				99F20C33C282842B400F0CEACE31375B /* Frameworks */,
+				F13FE8002579BE0E0BFC5C1403AB4963 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A105B1F53F79519281DC3107298526BA /* PBXTargetDependency */,
+			);
+			name = "Pods-Junto_Test";
+			productName = "Pods-Junto_Test";
+			productReference = 46189B3725ED054136A2E1344D53E06B /* Pods_Junto_Test.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F5998E20F683EE1E9022DCED6FFD564C /* MKDropdownMenu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A30A1B4B5C64B7177D21E129C72A9D7 /* Build configuration list for PBXNativeTarget "MKDropdownMenu" */;
+			buildPhases = (
+				2980F948F583F647BF072A91D49931B4 /* Sources */,
+				8A1CF8BAA21D76A2DC8F235C12E497F3 /* Frameworks */,
+				5CF91E0B745FCEEB1DFB6D794C30CEC0 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MKDropdownMenu;
+			productName = MKDropdownMenu;
+			productReference = 616CD3857173F91D39AA6A778B6D260E /* MKDropdownMenu.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 830BD4163B679175C02DCEC520819E0E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F5998E20F683EE1E9022DCED6FFD564C /* MKDropdownMenu */,
+				D189FBF1076CFD9C6383FB320A99BB91 /* Pods-Junto_Test */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2980F948F583F647BF072A91D49931B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A7812DA0B4C540CCAB4EE841638913E /* MKDropdownMenu-dummy.m in Sources */,
+				4B928BA447B8EF57B570E4926DABD652 /* MKDropdownMenu.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B77E12E2CF29827486CDE46999D91D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				817BC98283D1CEE8CB4A6BD3C17D9B0F /* Pods-Junto_Test-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A105B1F53F79519281DC3107298526BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MKDropdownMenu;
+			target = F5998E20F683EE1E9022DCED6FFD564C /* MKDropdownMenu */;
+			targetProxy = 9B9285A743AADE1553D57C86A2A69AEF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		163D87BE96A63549B0EACF1CC31A2E90 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		2711FF72089415D2245E1D70A3D7A8AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AAAF0DA1C383D535DA2CA0B1B4125CF0 /* MKDropdownMenu.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/MKDropdownMenu/MKDropdownMenu-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MKDropdownMenu/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MKDropdownMenu/MKDropdownMenu.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = MKDropdownMenu;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		707B86CFB21B645E37109F39754D4051 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BC385391A4EA04CDBED21E8BD001D745 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0668C281415AEEB8D7951F374BA3F7BB /* Pods-Junto_Test.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Junto_Test/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Junto_Test/Pods-Junto_Test.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Junto_Test;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CA7666B4F6306D0CA7F5958FAFF18FE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AAAF0DA1C383D535DA2CA0B1B4125CF0 /* MKDropdownMenu.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/MKDropdownMenu/MKDropdownMenu-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MKDropdownMenu/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MKDropdownMenu/MKDropdownMenu.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = MKDropdownMenu;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D445003FE5A28F1D365CB3BCD6589A82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B3A00252003D2E411F32F26986F26DE /* Pods-Junto_Test.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Junto_Test/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Junto_Test/Pods-Junto_Test.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Junto_Test;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				163D87BE96A63549B0EACF1CC31A2E90 /* Debug */,
+				707B86CFB21B645E37109F39754D4051 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		54624C9D646527DCF7AF75B9399E588E /* Build configuration list for PBXNativeTarget "Pods-Junto_Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC385391A4EA04CDBED21E8BD001D745 /* Debug */,
+				D445003FE5A28F1D365CB3BCD6589A82 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A30A1B4B5C64B7177D21E129C72A9D7 /* Build configuration list for PBXNativeTarget "MKDropdownMenu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA7666B4F6306D0CA7F5958FAFF18FE1 /* Debug */,
+				2711FF72089415D2245E1D70A3D7A8AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

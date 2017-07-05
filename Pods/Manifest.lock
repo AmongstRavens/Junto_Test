@@ -1,0 +1,12 @@
+PODS:
+  - MKDropdownMenu (1.4)
+
+DEPENDENCIES:
+  - MKDropdownMenu
+
+SPEC CHECKSUMS:
+  MKDropdownMenu: 269df4a41d21a1db684ce8bc709befe419fc5bae
+
+PODFILE CHECKSUM: c45af3bdf28f11b344739bd9d541049417960592
+
+COCOAPODS: 1.2.1
