@@ -6,6 +6,7 @@
 //  Copyright © 2017 Sergey. All rights reserved.
 //
 
+import UIKit
 import Foundation
 
 class Category{
@@ -21,7 +22,22 @@ class Category{
 }
 
 class Product{
+    var imageUrl : String
+    var image : UIImage?
+    var title : String
+    var description : String
+    var upvotes : String
     
+    init(title: String, description : String, imageUrl: String, upvotes: String){
+        self.description = description
+        self.title = title
+        self.imageUrl = imageUrl
+        self.upvotes = upvotes
+    }
+}
+
+struct imageCache{
+    static var cache = NSCache<AnyObject, AnyObject>()
 }
 
 

@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import UIKit
+
 extension URL {
     func appendingQueryParameters(_ parametersDictionary : Dictionary<String, String>) -> URL {
         let URLString : String = String(format: "%@?%@", self.absoluteString, parametersDictionary.queryParameters)
